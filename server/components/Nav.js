@@ -1,6 +1,8 @@
 import React from 'react';
-import { Nav as BsNav, Navbar } from 'react-bootstrap';
-import NavItem from 'components/NavItem';
+import { Nav as BsNav, Navbar, NavItem } from 'react-bootstrap';
+import Link from 'react-router/Link';
+import NavItemLink from 'components/NavItemLink';
+import Icon from 'components/Icon';
 
 const {
   Header: NavbarHeader,
@@ -11,17 +13,25 @@ const Nav = () => (
   <Navbar>
     <NavbarHeader>
       <NavbarBrand>
-        Elm Demos
+        <Link to="/">
+          Elm Demos
+        </Link>
       </NavbarBrand>
     </NavbarHeader>
 
     <BsNav>
-      <NavItem to="/">
+      <NavItemLink to="/">
         Home
-      </NavItem>
+      </NavItemLink>
 
-      <NavItem to="/01-getting-started">
+      <NavItemLink to="/01-getting-started">
         01 - Getting Started
+      </NavItemLink>
+    </BsNav>
+
+    <BsNav pullRight>
+      <NavItem href="https://github.com/jfairbank/elm-demos" target="_blank" rel="noopener">
+        <Icon name="github" size="lg" />
       </NavItem>
     </BsNav>
   </Navbar>

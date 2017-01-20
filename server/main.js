@@ -1,7 +1,18 @@
 import React from 'react';
-import { render } from 'react-dom';
-import App from 'components/App';
+import ReactDOM from 'react-dom';
 
-render((
-  <App />
-), document.getElementById('main'));
+function render() {
+  const App = require('components/App').default;
+
+  ReactDOM.render((
+    <App />
+  ), document.getElementById('main'));
+}
+
+if (module.hot) {
+  module.hot.accept('components/App', () => {
+    render();
+  });
+}
+
+render();
