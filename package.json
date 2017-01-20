@@ -5,6 +5,9 @@
   "description": "",
   "main": "build.js",
   "scripts": {
+    "build": "npm run clean && NODE_ENV=production webpack && cp server/CNAME public && cp server/favicon.ico public && cp public/{index,200}.html && cp public/{index,404}.html",
+    "clean": "rm -rf public",
+    "deploy": "npm run build && surge public",
     "dev": "webpack-dev-server --inline --hot --port 3000"
   },
   "repository": {
@@ -33,7 +36,9 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
+    "extract-text-webpack-plugin": "beta",
     "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.26.0",
     "node-sass": "^4.3.0",
     "sass-loader": "^4.1.1",
     "shelljs": "^0.7.6",
