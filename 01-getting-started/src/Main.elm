@@ -36,7 +36,7 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div [ class "getting-started-01" ]
+    div [ class "counter-01" ]
         [ div [] [ text (toString model) ]
         , button [ onClick Increment ] [ text "Increment" ]
         , button [ onClick Decrement ] [ text "Decrement" ]

@@ -1,8 +1,7 @@
-# 01 - Counter App
+# 02 - Simple Voting App
 
-This first app is a simple app with a counter that you can increment or
-decrement with appropriate buttons. Source code is available in `src/`. To run
-the demo follow these instructions:
+This second app is a simple app that allows voting on two different options.
+Source code is available in `src/`. To run the demo follow these instructions:
 
 ### Installation
 

@@ -24,8 +24,12 @@ const Nav = () => (
         Home
       </NavItemLink>
 
-      <NavItemLink to="/01-getting-started">
-        01 - Getting Started
+      <NavItemLink to="/01-counter">
+        01 - Counter App
+      </NavItemLink>
+
+      <NavItemLink to="/02-simple-voting">
+        02 - Simple Voting App
       </NavItemLink>
     </BsNav>
 
