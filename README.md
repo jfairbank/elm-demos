@@ -6,7 +6,7 @@ This repo contains example Elm apps to complement future blog posts on Elm.
 
 You can run individual demos by going into the appropriate directory and
 following the instructions in the README there. Demos are contained in the
-folders that start with a number like `01-getting-started/`.
+folders that start with a number like `01-counter/`.
 
 ## All Apps
 

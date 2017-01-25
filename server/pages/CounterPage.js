@@ -1,6 +1,6 @@
 import React from 'react';
 import Elm from 'react-elm-components';
-import { Main } from '01-getting-started/src/exports';
+import { Main } from '01-counter/src/exports';
 
 const CounterPage = () => (
   <div style={{ textAlign: 'center' }}>
