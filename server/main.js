@@ -1,19 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import '../01-counter/src/main.css';
+import '../02-voting/src/main.css';
+import { Main } from './Main.elm';
 
-function render() {
-  // eslint-disable-next-line global-require
-  const App = require('components/App').default;
-
-  ReactDOM.render((
-    <App />
-  ), document.getElementById('main'));
-}
-
-if (module.hot) {
-  module.hot.accept('components/App', () => {
-    render();
-  });
-}
-
-render();
+Main.embed(document.getElementById('main'));
