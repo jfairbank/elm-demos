@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const production = process.env.NODE_ENV === 'production';
 
 const config = {
-  entry: path.resolve(__dirname, 'server/main.js'),
+  entry: path.resolve(__dirname, 'app/main.js'),
 
   output: {
     path: path.resolve(__dirname, 'public'),
@@ -17,7 +17,7 @@ const config = {
   resolve: {
     modules: [
       __dirname,
-      path.resolve(__dirname, 'server'),
+      path.resolve(__dirname, 'app'),
       'node_modules',
     ],
   },
@@ -52,7 +52,7 @@ const config = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'server/index.ejs'),
+      template: path.resolve(__dirname, 'app/index.ejs'),
     }),
   ],
 };

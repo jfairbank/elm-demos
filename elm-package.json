@@ -4,7 +4,7 @@
     "repository": "https://github.com/user/project.git",
     "license": "BSD3",
     "source-directories": [
-        "server",
+        "app",
         "01-counter/src/",
         "02-voting/src/"
     ],

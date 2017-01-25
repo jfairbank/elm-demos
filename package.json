@@ -5,7 +5,7 @@
   "description": "",
   "main": "build.js",
   "scripts": {
-    "build": "npm run clean && NODE_ENV=production webpack && cp server/CNAME public && cp server/favicon.ico public && cp public/{index,200}.html && cp public/{index,404}.html",
+    "build": "npm run clean && NODE_ENV=production webpack && cp app/CNAME public && cp app/favicon.ico public && cp public/{index,200}.html && cp public/{index,404}.html",
     "clean": "rm -rf public",
     "deploy": "npm run build && surge public",
     "dev": "webpack-dev-server --inline --hot --port 3000"
