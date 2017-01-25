@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import App exposing (..)
+import Counter exposing (..)
 import Html exposing (program)
 
 
