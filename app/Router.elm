@@ -1,8 +1,8 @@
 module Router exposing (..)
 
-import Navigation
 import Maybe exposing (withDefault)
-import UrlParser as Url exposing (s, top)
+import Navigation exposing (Location)
+import UrlParser as Url exposing (map, oneOf, parsePath, s, top, Parser)
 
 
 type Route
@@ -11,15 +11,15 @@ type Route
     | VotingRoute
 
 
-route : Url.Parser (Route -> a) a
+route : Parser (Route -> a) a
 route =
-    Url.oneOf
-        [ Url.map HomeRoute top
-        , Url.map CounterRoute (s "01-counter")
-        , Url.map VotingRoute (s "02-voting")
+    oneOf
+        [ map HomeRoute top
+        , map CounterRoute (s "01-counter")
+        , map VotingRoute (s "02-voting")
         ]
 
 
-getRoute : Navigation.Location -> Route
+getRoute : Location -> Route
 getRoute =
-    Url.parsePath route >> withDefault HomeRoute
+    parsePath route >> withDefault HomeRoute
