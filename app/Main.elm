@@ -3,10 +3,13 @@ module Main exposing (..)
 import Counter
 import Voting
 import Navigation
-import Router exposing (getRoute, Route(..))
 import Components.Nav as Nav exposing (navItem, navView)
 import Html exposing (a, div, h1, h4, i, li, nav, text, ul, Html)
 import Html.Attributes exposing (class, classList, href, style)
+import Monocle.Lens exposing (Lens)
+import Return exposing (Return)
+import Return.Optics exposing (refractl)
+import Router exposing (getRoute, Route(..))
 import Utils.Op exposing ((=>))
 
 
@@ -30,53 +33,59 @@ initialModel =
         >> Model Counter.initialModel Voting.initialModel
 
 
-init : Navigation.Location -> ( Model, Cmd Msg )
+init : Navigation.Location -> Return Msg Model
 init location =
     ( initialModel location, Cmd.none )
 
 
-setStateForRoute : Model -> Navigation.Location -> Model
-setStateForRoute model location =
+counterl : Lens Model Counter.Model
+counterl =
+    Lens .counter (\c m -> { m | counter = c })
+
+
+votingl : Lens Model Voting.Model
+votingl =
+    Lens .voting (\v m -> { m | voting = v })
+
+
+routel : Lens Model Route
+routel =
+    Lens .route (\r m -> { m | route = r })
+
+
+setStateForLocation : Navigation.Location -> Model -> Model
+setStateForLocation location =
     let
         route =
             getRoute location
-
-        newModel =
-            { model | route = route }
     in
-        case route of
-            CounterRoute ->
-                { newModel | counter = Counter.initialModel }
+        .set routel route
+            >> case route of
+                CounterRoute ->
+                    .set counterl Counter.initialModel
 
-            VotingRoute ->
-                { newModel | voting = Voting.initialModel }
+                VotingRoute ->
+                    .set votingl Voting.initialModel
 
-            _ ->
-                newModel
+                _ ->
+                    identity
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        NewUrl url ->
-            ( model, Navigation.newUrl url )
+update : Msg -> Model -> Return Msg Model
+update msg =
+    Return.singleton
+        >> case msg of
+            NewUrl url ->
+                Return.command (Navigation.newUrl url)
 
-        UrlChange location ->
-            ( setStateForRoute model location, Cmd.none )
+            UrlChange location ->
+                Return.map (setStateForLocation location)
 
-        CounterMsg subMsg ->
-            let
-                ( updatedCounter, cmd ) =
-                    Counter.update subMsg model.counter
-            in
-                ( { model | counter = updatedCounter }, Cmd.map CounterMsg cmd )
+            CounterMsg subMsg ->
+                refractl counterl CounterMsg (Counter.update subMsg)
 
-        VotingMsg subMsg ->
-            let
-                ( updatedVoting, cmd ) =
-                    Voting.update subMsg model.voting
-            in
-                ( { model | voting = updatedVoting }, Cmd.map VotingMsg cmd )
+            VotingMsg subMsg ->
+                refractl votingl VotingMsg (Voting.update subMsg)
 
 
 subscriptions : Model -> Sub Msg
