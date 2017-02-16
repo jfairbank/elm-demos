@@ -1,7 +1,7 @@
 module Main exposing (..)
 
-import Voting exposing (..)
 import Html exposing (program)
+import StarWars exposing (..)
 
 
 main : Program Never Model Msg

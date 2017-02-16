@@ -1,6 +1,6 @@
-# 02 - Simple Voting App
+# 02 - Star Wars
 
-This second app is a simple app that allows voting on two different options.
+This second app is a simple app that allows searching for Star Wars characters.
 Source code is available in `src/`. To run the demo follow these instructions:
 
 ### Installation

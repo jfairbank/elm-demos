@@ -1,0 +1,90 @@
+.star-wars-02 {
+  color: #293c4b;
+  font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Grande', 'Bitstream Vera Sans', 'Helvetica Neue', sans-serif;
+  font-size: 30px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 800px;
+}
+
+.star-wars-02 label {
+  display: block;
+  font-size: 20px;
+}
+
+.star-wars-02 input,
+.star-wars-02 button {
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 6px;
+}
+
+.star-wars-02 button {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.star-wars-02 button:active {
+  box-shadow: none;
+}
+
+.star-wars-02 button:active, button:focus {
+  outline: none;
+}
+
+.star-wars-02 a {
+  color: #369;
+  cursor: pointer;
+}
+
+.star-wars-02 a:hover {
+  text-decoration: underline;
+}
+
+.star-wars-02__search > h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+
+.star-wars-02__search-results {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.star-wars-02__detail a {
+  font-size: 20px;
+}
+
+.star-wars-02__detail h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.star-wars-02__detail h4 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.star-wars-02__detail table {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.star-wars-02__detail th,
+.star-wars-02__detail td {
+  border: 1px solid #ddd;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.star-wars-02__detail th {
+  text-align: left;
+}

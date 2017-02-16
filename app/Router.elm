@@ -8,18 +8,18 @@ import UrlParser as Url exposing (map, oneOf, parsePath, s, top, Parser)
 type Route
     = HomeRoute
     | CounterRoute
-    | VotingRoute
+    | StarWarsRoute
 
 
-route : Parser (Route -> a) a
-route =
-    oneOf
-        [ map HomeRoute top
-        , map CounterRoute (s "01-counter")
-        , map VotingRoute (s "02-voting")
-        ]
+parseRoute : Location -> Maybe Route
+parseRoute =
+    parsePath <|
+        oneOf
+            [ map HomeRoute top
+            , map CounterRoute (s "01-counter")
+            , map StarWarsRoute (s "02-star-wars")
+            ]
 
 
-getRoute : Location -> Route
 getRoute =
-    parsePath route >> withDefault HomeRoute
+    withDefault HomeRoute << parseRoute
